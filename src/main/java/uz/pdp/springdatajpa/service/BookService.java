@@ -13,6 +13,7 @@ import uz.pdp.springdatajpa.exception.DataNotFoundException;
 import uz.pdp.springdatajpa.repository.BookRepository;
 
 import java.util.List;
+import java.util.Optional;
 
 @Service
 @RequiredArgsConstructor
@@ -27,8 +28,20 @@ public class BookService {
     }
 
 
-    public List<BookEntity> findAll(int page, int size) {
-        return bookRepository.findAll(PageRequest.of(page, size)).getContent();
+    public List<BookEntity> findAll(Optional<Integer> page, Optional<Integer> size) {
+        if(page.isPresent()) {
+            if(size.isPresent()) {
+                return bookRepository.findAll(PageRequest.of(page.get(), size.get())).getContent();
+            }
+            return bookRepository.findAll(PageRequest.of(page.get(), 2)).getContent();
+        }
+
+        if(size.isPresent()) {
+            return bookRepository.findAll(PageRequest.of(0, size.get())).getContent();
+        }
+
+        return bookRepository.findAll();
+
     }
 
     public BookEntity findById(Long id) {

@@ -1,19 +1,15 @@
-package uz.pdp.springdatajpa.controller;
+package uz.pdp.springdatajpa.controller.restapi;
 
 import lombok.RequiredArgsConstructor;
-import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.*;
 import uz.pdp.springdatajpa.dto.StudentDto;
 import uz.pdp.springdatajpa.entity.StudentEntity;
-import uz.pdp.springdatajpa.repository.StudentRepository;
 import uz.pdp.springdatajpa.service.StudentService;
-
-import java.util.List;
 
 @RestController
 @RequestMapping("/api/v1/auth")
 @RequiredArgsConstructor
-public class AuthController extends BaseController{
+public class AuthControllerRest {
 
     private final StudentService studentService;
 
