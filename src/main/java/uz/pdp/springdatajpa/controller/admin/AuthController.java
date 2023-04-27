@@ -13,7 +13,7 @@ public class AuthController {
     @GetMapping("/sign-in")
     public ModelAndView signIn(@RequestParam String username, @RequestParam String password) {
         System.out.println(username);
-        System.out.println(password);
+        System.out.println("This is from friend");
 
         StudentEntity student = new StudentEntity();
         student.setName(username);
