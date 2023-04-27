@@ -1,4 +1,4 @@
-package uz.pdp.springdatajpa.controller;
+package uz.pdp.springdatajpa.controller.restapi;
 
 import lombok.RequiredArgsConstructor;
 import org.springframework.web.bind.annotation.*;
@@ -7,11 +7,12 @@ import uz.pdp.springdatajpa.entity.BookEntity;
 import uz.pdp.springdatajpa.service.BookService;
 
 import java.util.List;
+import java.util.Optional;
 
 @RestController
-@RequestMapping("/book")
+@RequestMapping("/api/v1/book")
 @RequiredArgsConstructor
-public class BookController extends BaseController {
+public class BookControllerRest {
     private final BookService bookService;
 
     @PostMapping("/create")
@@ -42,12 +43,9 @@ public class BookController extends BaseController {
 
     @GetMapping("/get-all")
     public List<BookEntity> getAll(
-            @RequestParam int page,
-            @RequestParam int size
+            @RequestParam Optional<Integer> page,
+            @RequestParam Optional<Integer> size
     ) {
         return bookService.findAll(page, size);
     }
-
-
-
 }
