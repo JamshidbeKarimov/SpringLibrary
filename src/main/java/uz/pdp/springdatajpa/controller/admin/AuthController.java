@@ -12,9 +12,6 @@ public class AuthController {
 
     @GetMapping("/sign-in")
     public ModelAndView signIn(@RequestParam String username, @RequestParam String password) {
-        System.out.println(username);
-        System.out.println(password);
-
         StudentEntity student = new StudentEntity();
         student.setName(username);
 
